@@ -12,8 +12,16 @@
         "source": "/home/roshan/Documents/calc/Chess/app/src/main/res/drawable-v24/ic_launcher_foreground.xml"
     },
     {
+        "merged": "/home/roshan/Documents/calc/Chess/app/build/intermediates/res/merged/debug/layout_activity_first.xml.flat",
+        "source": "/home/roshan/Documents/calc/Chess/app/src/main/res/layout/activity_first.xml"
+    },
+    {
         "merged": "/home/roshan/Documents/calc/Chess/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
         "source": "/home/roshan/Documents/calc/Chess/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/roshan/Documents/calc/Chess/app/build/intermediates/res/merged/debug/drawable_ic_baseline_undo_24.xml.flat",
+        "source": "/home/roshan/Documents/calc/Chess/app/src/main/res/drawable/ic_baseline_undo_24.xml"
     },
     {
         "merged": "/home/roshan/Documents/calc/Chess/app/build/intermediates/res/merged/debug/drawable-v24_bp.png.flat",
@@ -22,10 +30,6 @@
     {
         "merged": "/home/roshan/Documents/calc/Chess/app/build/intermediates/res/merged/debug/drawable-v24_wq.png.flat",
         "source": "/home/roshan/Documents/calc/Chess/app/src/main/res/drawable-v24/wq.png"
-    },
-    {
-        "merged": "/home/roshan/Documents/calc/Chess/app/build/intermediates/res/merged/debug/drawable-v24_board.png.flat",
-        "source": "/home/roshan/Documents/calc/Chess/app/src/main/res/drawable-v24/board.png"
     },
     {
         "merged": "/home/roshan/Documents/calc/Chess/app/build/intermediates/res/merged/debug/drawable-v24_bq.png.flat",
@@ -60,6 +64,10 @@
         "source": "/home/roshan/Documents/calc/Chess/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
     },
     {
+        "merged": "/home/roshan/Documents/calc/Chess/app/build/intermediates/res/merged/debug/drawable-v24_paper.jpg.flat",
+        "source": "/home/roshan/Documents/calc/Chess/app/src/main/res/drawable-v24/paper.jpg"
+    },
+    {
         "merged": "/home/roshan/Documents/calc/Chess/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_round.png.flat",
         "source": "/home/roshan/Documents/calc/Chess/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
     },
@@ -84,8 +92,16 @@
         "source": "/home/roshan/Documents/calc/Chess/app/src/main/res/drawable-v24/wr.png"
     },
     {
+        "merged": "/home/roshan/Documents/calc/Chess/app/build/intermediates/res/merged/debug/drawable-v24_logo.png.flat",
+        "source": "/home/roshan/Documents/calc/Chess/app/src/main/res/drawable-v24/logo.png"
+    },
+    {
         "merged": "/home/roshan/Documents/calc/Chess/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "/home/roshan/Documents/calc/Chess/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/roshan/Documents/calc/Chess/app/build/intermediates/res/merged/debug/drawable-v24_board.jpg.flat",
+        "source": "/home/roshan/Documents/calc/Chess/app/src/main/res/drawable-v24/board.jpg"
     },
     {
         "merged": "/home/roshan/Documents/calc/Chess/app/build/intermediates/res/merged/debug/drawable-v24_bk.png.flat",
@@ -106,6 +122,10 @@
     {
         "merged": "/home/roshan/Documents/calc/Chess/app/build/intermediates/res/merged/debug/drawable-v24_br.png.flat",
         "source": "/home/roshan/Documents/calc/Chess/app/src/main/res/drawable-v24/br.png"
+    },
+    {
+        "merged": "/home/roshan/Documents/calc/Chess/app/build/intermediates/res/merged/debug/drawable-v24_tag.jpg.flat",
+        "source": "/home/roshan/Documents/calc/Chess/app/src/main/res/drawable-v24/tag.jpg"
     },
     {
         "merged": "/home/roshan/Documents/calc/Chess/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",

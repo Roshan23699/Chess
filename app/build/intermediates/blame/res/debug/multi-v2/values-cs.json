@@ -4,6 +4,23 @@
             "outputFile": "/home/roshan/Documents/calc/Chess/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-cs/values-cs.xml",
             "map": [
                 {
+                    "source": "/home/roshan/.gradle/caches/transforms-2/files-2.1/52bcdde783b993926de945b31941af0a/wear-1.0.0/res/values-cs/values-cs.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,171",
+                        "endColumns": "115,123",
+                        "endOffsets": "166,290"
+                    },
+                    "to": {
+                        "startLines": "31,32",
+                        "startColumns": "4,4",
+                        "startOffsets": "2981,3097",
+                        "endColumns": "115,123",
+                        "endOffsets": "3092,3216"
+                    }
+                },
+                {
                     "source": "/home/roshan/.gradle/caches/transforms-2/files-2.1/03736cf4bc3669a69d502627b70a527e/core-1.1.0/res/values-cs/values-cs.xml",
                     "from": {
                         "startLines": "2",

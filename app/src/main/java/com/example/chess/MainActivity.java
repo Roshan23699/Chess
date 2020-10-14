@@ -3,23 +3,36 @@ package com.example.chess;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Layout;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
+    ImageView mainMenu;
     public int touchedPiece;// value of the position in stringBoard
     Set<Integer> validMoves;
+    String movedpieces[] = new String[100];
+    int from [] = new int[100];
+    int to [] = new int [100];
+    int index = 0;
+    public String[][] Game = new String[100][100];
+
+
     public String[] stringBoard = {
             "wr", "wn", "wb", "wq", "wk", "wb", "wn", "wr",
             "wp", "wp", "wp", "wp", "wp", "wp", "wp", "wp",
@@ -30,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
             "bp", "bp", "bp", "bp", "bp", "bp", "bp", "bp",
             "br", "bn", "bb", "bq", "bk", "bb", "bn", "br"
     };
+
+
     public int[] position = {
             R.id.a1, R.id.b1, R.id.c1, R.id.d1, R.id.e1, R.id.f1, R.id.g1, R.id.h1,
             R.id.a2, R.id.b2, R.id.c2, R.id.d2, R.id.e2, R.id.f2, R.id.g2, R.id.h2,
@@ -47,8 +62,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        for(int i = 0; i < 64; i++)Game[index][i] = stringBoard[i];
+        mainMenu = findViewById(R.id.back);
+        mainMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(MainActivity.this, FirstActivity.class));
+            }
+        });
         ImageView img = findViewById(R.id.a1);
         img.setTag(R.drawable.wr);
         img.setContentDescription(String.valueOf(R.id.a11));
@@ -253,8 +278,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void click(View view) {
-        for(int i = 0; i < 64; i++)
-            Log.d("hello", "click: stringboard " + i + " " + stringBoard[i]);
         ImageView imageView = (ImageView) view;
         if (val != 0) {
             changeImageResource();
@@ -262,18 +285,91 @@ public class MainActivity extends AppCompatActivity {
             int move = findMove(imageView.getId());
             if (validMoves.contains(move)) {
 
-                if(checkTag(val).length() > 1 && checkTag(val).charAt(1) == 'p' && ((move <= 63 && move >= 56) || (move <= 7 && move >= 0))) {
-                    askOptions(true, imageView, move);
+
+                //checking castling previleges
+
+                if(checkTag(val) == "wk" && stringBoard[4] == "wk" && move == 6) {
+                    stringBoard[7] = "0";
+                    stringBoard[5] = "wr";
+                    ImageView it = findViewById(position[7]);
+                    it.setImageResource(0);
+                    it.setTag(0);
+                    it = findViewById(position[5]);
+                    it.setImageResource(R.drawable.wr);
+                    it.setTag(R.drawable.wr);
+                }
+                if(checkTag(val) == "wk" && stringBoard[4] == "wk" && move == 2) {
+                    stringBoard[0] = "0";
+                    stringBoard[3] = "wr";
+                    ImageView it = findViewById(position[0]);
+                    it.setImageResource(0);
+                    it.setTag(0);
+                    it = findViewById(position[3]);
+                    it.setImageResource(R.drawable.wr);
+                    it.setTag(R.drawable.wr);
+                }
+                if(checkTag(val) == "bk" && stringBoard[60] == "bk" && move == 62) {
+                    stringBoard[63] = "0";
+                    stringBoard[61] = "br";
+                    ImageView it = findViewById(position[63]);
+                    it.setImageResource(0);
+                    it.setTag(0);
+                    it = findViewById(position[61]);
+                    it.setImageResource(R.drawable.br);
+                    it.setTag(R.drawable.br);
+                }
+                if(checkTag(val) == "bk" && stringBoard[60] == "bk" && move == 58) {
+                    stringBoard[56] = "0";
+                    stringBoard[59] = "br";
+                    ImageView it = findViewById(position[56]);
+                    it.setImageResource(0);
+                    it.setTag(0);
+                    it = findViewById(position[59]);
+                    it.setImageResource(R.drawable.br);
+                    it.setTag(R.drawable.br);
                 }
 
 
+
+
+
+
+
+
+
+                if(checkTag(val).length() > 1 && checkTag(val).charAt(1) == 'p' && ((move <= 63 && move >= 56) || (move <= 7 && move >= 0))) {
+                    askOptions(true, imageView, move);
+                }
+                Log.d("hello", "click: helloworkinghello" + move);
+                if(index > 0 && move == to[index - 1] + 8 && checkTag(val) == "wp") {
+                    Log.d("hello", "click: helloworkinghello");
+                    stringBoard[to[index - 1]] = "0";
+                    ((ImageView)(findViewById(position[to[index - 1]]))).setImageResource(0);
+                    ((ImageView)(findViewById(position[to[index - 1]]))).setTag(0);
+                }
+                if(index > 0 && move == to[index - 1] - 8 && checkTag(val) == "bp") {
+                    Log.d("hello", "click: helloworkinghello");
+                    stringBoard[to[index - 1]] = "0";
+                    ((ImageView)(findViewById(position[to[index - 1]]))).setImageResource(0);
+                    ((ImageView)(findViewById(position[to[index - 1]]))).setTag(0);
+                }
                 imageView.setImageResource(val);
                 stringBoard[move] = checkTag(val);
                 stringBoard[touchedPiece] = "0";
                 imageView.setTag(val);
-                val = 0;
                 prevView.setImageResource(0);
                 prevView.setTag(0);
+                movedpieces[index] = checkTag(val);
+                from[index]= findMove(prevView.getId());
+                to[index] = findMove(imageView.getId());
+                val = 0;
+
+                for(int i = 0; i < 64; i++) {
+                    Game[index][i] = stringBoard[i];
+                }
+                for(int i = 0; i < 64; i++) Log.d("hello", "click: clickx" + stringBoard[i] + Game[index - 1 >= 0 ? index - 1 : 0][i]);
+
+                index++;
                 Set<Integer>legal;
                 legal = legalMoves(true);
                 if(legal.contains(findPiece("bk"))) {
@@ -298,6 +394,7 @@ public class MainActivity extends AppCompatActivity {
                 bk.setBackgroundColor(0);
                 currentPlayer = switchPlayer();
                 checkIfCheckMate();
+
 
             } else val = 0;
 
@@ -425,6 +522,7 @@ public class MainActivity extends AppCompatActivity {
                     validMoves.add(touchedPiece + 9);
                 if (stringBoard[touchedPiece + 7].charAt(0) == 'b' && touchedPiece % 8 != 0)
                     validMoves.add(touchedPiece + 7);
+                if((touchedPiece <= 39 && touchedPiece >= 32) && (to[index - 1] - touchedPiece == 1 || to[index - 1] - touchedPiece == -1) && movedpieces[index - 1] == "bp")validMoves.add(to[index - 1] + 8);
             } else if (piece == 'b') {
                 for (int i = 1; i <= 8 && touchedPiece + i * 9 <= 63 && (touchedPiece + (i - 1) * 9) % 8 != 7; i++) {
                     if (stringBoard[touchedPiece + i * 9].charAt(0) == 'w') break;
@@ -692,6 +790,9 @@ public class MainActivity extends AppCompatActivity {
                     if (stringBoard[touchedPiece - 7 >= 0 ? touchedPiece - 7 : touchedPiece] == "0") {
                         validMoves.add(touchedPiece - 7);
                     }
+
+
+
                 } else if (touchedPiece % 8 == 7) {
                     if (stringBoard[touchedPiece - 1 >= 0 ? touchedPiece - 1 : touchedPiece].charAt(0) == 'b') {
                         validMoves.add(touchedPiece + 1);
@@ -756,12 +857,36 @@ public class MainActivity extends AppCompatActivity {
                     if (stringBoard[touchedPiece - 7 >= 0 ? touchedPiece - 7 : touchedPiece] == "0")
                         validMoves.add(touchedPiece - 7);
                 }
-                Set<Integer> legal = new HashSet<>();
-                legal = legalMoves(false);
-                Log.d("hello", "getValidMoves: legal" + legal);
-                for(Integer leg : legal) {
-                    validMoves.remove(leg);
+
+                //checking castling priveleges kingside
+                boolean c = true;
+                for(int i = 0; i < index; i++) {
+                    if(movedpieces[i] == "wk" || from[i] == 7) {
+                        c = false;
+                        break;
+                    }
                 }
+                Set<Integer> legal = legalMoves(false);
+                if(legal.contains(4) || legal.contains(5) || legal.contains(6))c = false;
+                if(stringBoard[5] != "0" || stringBoard[6] != "0")c= false;
+                if(c)validMoves.add(6);
+
+
+                //checking castling priveleges queenside
+                c = true;
+                for(int i = 0; i < index; i++) {
+                    if(movedpieces[i] == "wk" || from[i] == 0) {
+                        c = false;
+                        break;
+                    }
+                }
+                legal = legalMoves(false);
+                if(legal.contains(4) || legal.contains(3) || legal.contains(2))c = false;
+                if(stringBoard[1] != "0" || stringBoard[2] != "0" || stringBoard[3] != "0")c= false;
+                if(c)validMoves.add(2);
+
+
+
             }
 
 
@@ -777,6 +902,7 @@ public class MainActivity extends AppCompatActivity {
                     validMoves.add(touchedPiece - 9);
                 if (stringBoard[touchedPiece - 7].charAt(0) == 'w' && touchedPiece % 8 != 7)
                     validMoves.add(touchedPiece - 7);
+                if((touchedPiece <= 31 && touchedPiece >= 24) && (to[index - 1] - touchedPiece == 1 || to[index - 1] - touchedPiece == -1) && movedpieces[index - 1] == "wp")validMoves.add(to[index - 1] - 8);
             } else if (piece == 'b') {
                 for (int i = 1; i <= 8 && touchedPiece + i * 9 <= 63 && (touchedPiece + (i - 1) * 9) % 8 != 7; i++) {
                     if (stringBoard[touchedPiece + i * 9].charAt(0) == 'b') break;
@@ -1094,6 +1220,41 @@ public class MainActivity extends AppCompatActivity {
                     if (stringBoard[touchedPiece - 7 >= 0 ? touchedPiece - 7 : touchedPiece] == "0")
                         validMoves.add(touchedPiece - 7);
                 }
+
+
+                //checking castling priveleges kingside
+                boolean c = true;
+                for(int i = 0; i < index; i++) {
+                    if(movedpieces[i] == "bk" || from[i] == 63) {
+                        c = false;
+                        break;
+                    }
+                }
+                Set<Integer> legal = legalMoves(true);
+                if(legal.contains(60) || legal.contains(61) || legal.contains(62))c = false;
+                if(stringBoard[61] != "0" || stringBoard[62] != "0")c= false;
+                if(c)validMoves.add(62);
+
+
+                //checking castling priveleges queenside
+                c = true;
+                for(int i = 0; i < index; i++) {
+                    if(movedpieces[i] == "bk" || from[i] == 56) {
+                        c = false;
+                        break;
+                    }
+                }
+                legal = legalMoves(true);
+                if(legal.contains(60) || legal.contains(59) || legal.contains(58))c = false;
+                if(stringBoard[57] != "0" || stringBoard[59] != "0" || stringBoard[58] != "0")c= false;
+                if(c)validMoves.add(58);
+
+
+
+
+
+
+
 
             }
         }
@@ -2646,5 +2807,53 @@ public class MainActivity extends AppCompatActivity {
         }
         TextView checkMate = findViewById(R.id.checkMate);
         checkMate.setText("CheckMate! " + currentPlayer + " Lost");
+        checkMate.setVisibility(checkMate.VISIBLE);
+    }
+    public void setBoardAccordingTostringBoard() {
+
+        for(int i = 0; i < 64; i++) {
+            Log.d("hello", "setBoardAccordingTostringBoard: stringboardx" + stringBoard[i]);
+            ImageView img = (ImageView)findViewById(position[i]);
+            Log.d("hello", "setBoardAccordingTostringBoard: helloworld" + img);
+            ImageView img1 = (ImageView)findViewById(Integer.parseInt(img.getContentDescription().toString()));
+            int imageResource = getTag(stringBoard[i]);
+            img.setImageResource(imageResource);
+            img.setTag(imageResource);
+            img1.setTag(0);
+
+            img1.setImageResource(0);
+        }
+        return;
+
+
+    }
+    public int getTag(String str) {
+        if (str == "wp") return R.drawable.wp;
+        else if (str == "bp") return R.drawable.bp;
+        else if (str == "wr") return R.drawable.wr;
+        else if (str == "br") return R.drawable.br;
+        else if (str == "wb") return R.drawable.wb;
+        else if (str == "bb") return R.drawable.bb;
+        else if (str == "wn") return R.drawable.wn;
+        else if (str == "bn") return R.drawable.bn;
+        else if (str == "wq") return R.drawable.wq;
+        else if (str == "bq") return R.drawable.bq;
+        else if (str == "wk") return R.drawable.wk;
+        else if (str == "bk") return R.drawable.bk;
+        else return 0;
+
+    }
+    public void undo(View view) {
+        if(index == 0)return;
+        index = index - 2 >= 0 ? index - 2 : 0;
+        for(int i = 0; i < 64; i++)
+            stringBoard[i] = Game[index][i];
+
+        index++;
+        val = 0;
+        touchedPiece = 0;
+        setBoardAccordingTostringBoard();
+        currentPlayer = switchPlayer();
+        return;
     }
 }

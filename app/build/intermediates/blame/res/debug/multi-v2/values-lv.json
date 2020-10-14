@@ -29,6 +29,23 @@
                         "endColumns": "119,109,108,85,103,121,81,80,109,106,105,108,111,102,111,106,104,99,83,108,110,98,110,106,104,173,98,81",
                         "endOffsets": "220,330,439,525,629,751,833,914,1024,1131,1237,1346,1458,1561,1673,1780,1885,1985,2069,2178,2289,2388,2499,2606,2711,2885,2984,3066"
                     }
+                },
+                {
+                    "source": "/home/roshan/.gradle/caches/transforms-2/files-2.1/52bcdde783b993926de945b31941af0a/wear-1.0.0/res/values-lv/values-lv.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,168",
+                        "endColumns": "112,120",
+                        "endOffsets": "163,284"
+                    },
+                    "to": {
+                        "startLines": "31,32",
+                        "startColumns": "4,4",
+                        "startOffsets": "3172,3285",
+                        "endColumns": "112,120",
+                        "endOffsets": "3280,3401"
+                    }
                 }
             ]
         }

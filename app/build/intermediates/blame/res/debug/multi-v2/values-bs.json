@@ -14,6 +14,23 @@
                     }
                 },
                 {
+                    "source": "/home/roshan/.gradle/caches/transforms-2/files-2.1/52bcdde783b993926de945b31941af0a/wear-1.0.0/res/values-bs/values-bs.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,166",
+                        "endColumns": "110,118",
+                        "endOffsets": "161,280"
+                    },
+                    "to": {
+                        "startLines": "31,32",
+                        "startColumns": "4,4",
+                        "startOffsets": "3017,3128",
+                        "endColumns": "110,118",
+                        "endOffsets": "3123,3242"
+                    }
+                },
+                {
                     "source": "/home/roshan/.gradle/caches/transforms-2/files-2.1/03736cf4bc3669a69d502627b70a527e/core-1.1.0/res/values-bs/values-bs.xml",
                     "from": {
                         "startLines": "2",
