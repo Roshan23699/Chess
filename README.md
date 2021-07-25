@@ -1,5 +1,5 @@
 # Chess
-<h2><a href = "https://play.google.com/store/apps/details?id=com.invertaze.chess">Live Here</a>
+<h2><a href = "https://play.google.com/store/apps/details?id=com.invertaze.chess">Live Here</a></h2>
 The Android Chess game with Multiplayer mode. 
 The single player mode consist of following algorithms: 
   1. Minimax Algorithm
