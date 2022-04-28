@@ -22,7 +22,7 @@
 
 ## 👨🏻‍💻 About The Project
 <b><a href = "https://play.google.com/store/apps/details?id=com.invertaze.chess">Live Here</a></b><br/>
-Android Chess game with Singal and Multiplayer Mode
+Android Chess game with Single and Multiplayer Mode
 The single player mode consist of following algorithms: 
   1. Minimax Algorithm
   2. Alpha Beta prunning
